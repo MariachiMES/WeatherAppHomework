@@ -1,0 +1,109 @@
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-image: linear-gradient(to right, darkblue, cornflowerblue);
+  text-align: center;
+  color: white;
+}
+h1 {
+  font-weight: lighter;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+aside {
+  margin-top: 10px;
+  padding-left: 20px;
+  line-height: 10px;
+}
+.search-history {
+  flex-wrap: wrap;
+  float: left;
+  position: relative;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: inline;
+  margin-left: 20px;
+}
+
+#search {
+  font-size: 24px;
+  border-radius: 10px;
+  margin: 10px;
+}
+#submit-button {
+  font-size: 24px;
+  background-image: linear-gradient(blue, cornflowerblue);
+  color: white;
+  border: 0px;
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: 0px;
+  margin-right: 10px;
+  font-weight: lighter;
+}
+#submit-button:hover {
+  background-image: linear-gradient(darkblue, cornflowerblue);
+}
+.current-forecast {
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 5px;
+  position: absolute;
+  display: inline;
+  margin: 10px;
+  height: 300px;
+  width: 800px;
+}
+.current-city {
+  box-sizing: border-box;
+  display: block;
+  margin: 0px;
+  padding: 25px;
+  font-size: 30px;
+}
+.info {
+  font-size: 20px;
+  line-height: 40px;
+  margin-left: 25px;
+  color: black;
+}
+.forecast-card {
+  background-image: linear-gradient(rgb(102, 102, 200), rgb(12, 12, 93));
+  border-radius: 10px;
+  border: 1px solid white;
+  height: 300px;
+  width: 250px;
+  display: block;
+  margin: 0px;
+}
+.forecast-header {
+  margin-top: 70px;
+  margin-left: 25px;
+  margin-bottom: 10px;
+  font-size: 30px;
+}
+ul {
+  list-style-type: none;
+}
+.card-info {
+  color: white;
+  line-height: 30px;
+  margin: -10px;
+  font-size: 25px;
+}
+.five-day-forecast {
+  display: block;
+}
+.info-card {
+  font-size: 20px;
+  line-height: 40px;
+  margin-left: 25px;
+  color: white;
+}
