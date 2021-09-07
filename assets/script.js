@@ -79,6 +79,9 @@ let weather = {
     iconEl.src = "https://openweathermap.org/img/wn/" + icon + ".png";
     weatherDescriptionEL.innerHTML = main;
   },
+  search: function () {
+    weather.fetchWeather(searchEl.value);
+  },
   //   fetchUvi: function (lat,lon) {
   //     fetch(
   //         "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&" + lon + "={lon}&exclude={part}&appid={API key} +
@@ -89,6 +92,4 @@ let weather = {
   //       .then((response) => response.json())
   //       .then((data) => console.log(data));
 };
-clickOnWeather = function () {
-  submitButtonEl.addEventListener("click", fetchWeather(searchEl));
-};
+submitButtonEl.addEventListener("click", weather.search);
