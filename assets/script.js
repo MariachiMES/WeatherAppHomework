@@ -53,9 +53,11 @@ let weather = {
   },
   displayWeather: function (data) {
     var { name } = data;
-    var { icon, description } = data.weather[0];
+    var { icon, main } = data.weather[0];
     var { temp, humidity } = data.main;
     var { speed } = data.wind;
+    var { lon, lat } = data.coord;
+
     console.log(
       "the weather in " +
         name +
@@ -67,7 +69,7 @@ let weather = {
         speed +
         " Mph." +
         icon +
-        description
+        main
     );
     currentCityEl.innerHTML = name;
     cityTempEl.innerHTML = "Temp: " + temp + "°F";
@@ -75,8 +77,17 @@ let weather = {
     cityHumidityEL.innerHTML = "Humidity: " + humidity + "%";
     cityUvEl.innerHTML = "WHY ISN'T THIS WORKING??!!!";
     iconEl.src = "https://openweathermap.org/img/wn/" + icon + ".png";
-    weatherDescriptionEL.innerHTML = description;
+    weatherDescriptionEL.innerHTML = main;
   },
+  //   fetchUvi: function (lat,lon) {
+  //     fetch(
+  //         "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&" + lon + "={lon}&exclude={part}&appid={API key} +
+  //         city +
+  //         "&units=imperial&appid=" +
+  //         this.apiKey
+  //     )
+  //       .then((response) => response.json())
+  //       .then((data) => console.log(data));
 };
 clickOnWeather = function () {
   submitButtonEl.addEventListener("click", fetchWeather(searchEl));
