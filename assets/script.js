@@ -89,7 +89,7 @@ let weather = {
 
     latEl.innerText = lat;
     lonEl.innerText = lon;
-    currentCityEl.innerHTML = name;
+    currentCityEl.innerHTML = "Current Weather in " + name;
     cityTempEl.innerHTML = "Temp: " + temp + "°F";
     cityWindEl.innerHTML = "Wind: " + speed + " Miles/Hour";
     cityHumidityEL.innerHTML = "Humidity: " + humidity + "%";
