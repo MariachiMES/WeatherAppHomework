@@ -3,7 +3,7 @@ html {
 }
 body {
   padding: 0;
-  background-image: url("/assets/train.jpg");
+  background-image: url("./assets/train.jpg");
   background-size: 340%;
   background-position: -200px;
 }
@@ -106,7 +106,7 @@ aside {
   margin-left: 25px;
   margin-bottom: 10px;
   font-size: 30px;
-  text-shadow: black 3px 3px;
+  text-shadow: black 2px 2px;
 }
 ul {
   list-style-type: none;
