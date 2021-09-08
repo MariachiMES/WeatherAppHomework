@@ -3,7 +3,7 @@ html {
 }
 body {
   padding: 0;
-  background-image: url("./assets/train.jpg");
+  background-image: url("./train.jpg");
   background-size: 340%;
   background-position: -200px;
 }
@@ -126,7 +126,7 @@ ul {
   margin-left: 25px;
   color: white;
 }
-#weather-icon {
+#weather-icon1 {
   margin-left: 20px;
 }
 .mostRecent {

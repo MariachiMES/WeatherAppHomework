@@ -5,10 +5,17 @@ var cityHumidityEL = document.querySelector("#current-city-humidity");
 var cityUvEl = document.querySelector("#current-city-uv");
 var searchEl = document.querySelector("#search");
 var submitButtonEl = document.querySelector("#submit-button");
-var iconEl = document.querySelector("#weather-icon");
+var iconEl = document.querySelector("#weather-icon1");
 var weatherDescriptionEL = document.querySelector("#weather-description");
 var searchHeadingEL = document.querySelector("#search-heading");
 var firstSearchEL = document.querySelector(".mostRecent");
+
+//get a handle on the days of the week
+var dayOneIconEL = document.querySelector("#weather-icon2");
+var dayOneTempEL = document.querySelector("#temp1");
+var dayOneWindEl = document.querySelector("#wind1");
+var dayOneHumidityEl = document.querySelector("#humidity1");
+
 //pull from local storage
 var firstSearch = localStorage.getItem("recentSearch");
 firstSearchEL.innerHTML = firstSearch;
@@ -86,3 +93,4 @@ let weather = {
 };
 submitButtonEl.addEventListener("click", weather.search);
 firstSearchEL.innerText = firstSearch;
+firstSearchEL.addEventListener("click", event);
