@@ -7,38 +7,12 @@ var searchEl = document.querySelector("#search");
 var submitButtonEl = document.querySelector("#submit-button");
 var iconEl = document.querySelector("#weather-icon");
 var weatherDescriptionEL = document.querySelector("#weather-description");
-
+var searchHeadingEL = document.querySelector("#search-heading");
+var firstSearchEL = document.querySelector(".mostRecent");
+//pull from local storage
+var firstSearch = localStorage.getItem("recentSearch");
+firstSearchEL.innerHTML = firstSearch;
 // var apiKey = "bc3a571ec5865457fb6b52d6cce74452";
-
-// function getCurrentWeatherApi(city) {
-//   var requestUrl =
-//     "https://api.openweathermap.org/data/2.5/weather?q=" +
-//     city +
-//     "&units=imperial&appid=" +
-//     apiKey;
-
-//   fetch(requestUrl)
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (currentWeather) {
-//       console.log(currentWeather);
-
-//       //Loop over the data to generate a table, each table row will have a link to the shit
-//       //   for (var i = 0; i < currentWeather.length; i++) {
-//       //     var createTableRow = document.createElement("tr");
-//       //     var tableData = document.createElement("td");
-//       //     var link = document.createElement("a");
-
-//       //     link.textContent = currentWeather[i].html_url;
-//       //     link.href = currentWeather[i].html_url;
-//       //     tableData.appendChild(link);
-//       //     createTableRow.appendChild(tableData);
-//       //     tableBody.appendChild(createTableRow);
-//       //   }
-//     });
-//}
-var apiKey = "bc3a571ec5865457fb6b52d6cce74452";
 let weather = {
   apiKey: "bc3a571ec5865457fb6b52d6cce74452",
   fetchWeather: function (city) {
@@ -56,7 +30,9 @@ let weather = {
     var { icon, main } = data.weather[0];
     var { temp, humidity } = data.main;
     var { speed } = data.wind;
-    var { lon, lat } = data.coord;
+    var { id } = data;
+    var { lat, lon } = data.coord;
+    console.log(id + "," + lat + "," + lon);
 
     console.log(
       "the weather in " +
@@ -75,21 +51,38 @@ let weather = {
     cityTempEl.innerHTML = "Temp: " + temp + "°F";
     cityWindEl.innerHTML = "Wind: " + speed + " Miles/Hour";
     cityHumidityEL.innerHTML = "Humidity: " + humidity + "%";
-    cityUvEl.innerHTML = "WHY ISN'T THIS WORKING??!!!";
     iconEl.src = "https://openweathermap.org/img/wn/" + icon + ".png";
     weatherDescriptionEL.innerHTML = main;
   },
   search: function () {
     weather.fetchWeather(searchEl.value);
+    var recentSearch1 = searchEl.value;
+    localStorage.setItem("recentSearch", recentSearch1);
+    console.log("hello");
+
+    weather.uvIndexOnClick(weather.lat, weather.lon);
   },
-  //   fetchUvi: function (lat,lon) {
-  //     fetch(
-  //         "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&" + lon + "={lon}&exclude={part}&appid={API key} +
-  //         city +
-  //         "&units=imperial&appid=" +
-  //         this.apiKey
-  //     )
-  //       .then((response) => response.json())
-  //       .then((data) => console.log(data));
+  fetcyUvIndex: function (lat, lon) {
+    fetch(
+      "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+        lat +
+        "&lon=" +
+        lon +
+        "&appid=" +
+        this.apiKey
+    )
+      .then((uvResp) => uvResp.json())
+      .then((uvData) => this.displayUvIndex(uvData));
+  },
+  displayUvIndex: function (uvData) {
+    var { uvi } = uvData.current;
+    cityUvEl.innerHTML = uvi;
+    console.log(uvi);
+  },
+  uvIndexOnClick: function () {
+    weather.fetchUvIndex(lat, lon);
+    weather.displayUvIndex(unData);
+  },
 };
 submitButtonEl.addEventListener("click", weather.search);
+firstSearchEL.innerText = firstSearch;
