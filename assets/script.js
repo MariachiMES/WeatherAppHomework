@@ -5,16 +5,36 @@ var cityHumidityEL = document.querySelector("#current-city-humidity");
 var cityUvEl = document.querySelector("#current-city-uv");
 var searchEl = document.querySelector("#search");
 var submitButtonEl = document.querySelector("#submit-button");
-var iconEl = document.querySelector("#weather-icon1");
+var iconEl = document.querySelector("#weather-icon-0");
 var weatherDescriptionEL = document.querySelector("#weather-description");
 var searchHeadingEL = document.querySelector("#search-heading");
 var firstSearchEL = document.querySelector(".mostRecent");
 
 //get a handle on the days of the week
-var dayOneIconEL = document.querySelector("#weather-icon2");
+var dayOneIconEL = document.querySelector("#weather-icon-1");
 var dayOneTempEL = document.querySelector("#temp1");
 var dayOneWindEl = document.querySelector("#wind1");
 var dayOneHumidityEl = document.querySelector("#humidity1");
+
+var dayTwoIconEL = document.querySelector("#weather-icon-1");
+var dayTwoTempEL = document.querySelector("#temp1");
+var dayTwoWindEl = document.querySelector("#wind1");
+var dayTwoHumidityEl = document.querySelector("#humidity1");
+
+var dayThreeIconEL = document.querySelector("#weather-icon-1");
+var dayThreetempEL = document.querySelector("#temp1");
+var dayThreeWindEl = document.querySelector("#wind1");
+var dayThreeHumidityEl = document.querySelector("#humidity1");
+
+var dayFourIconEL = document.querySelector("#weather-icon-1");
+var dayFourTempEL = document.querySelector("#temp1");
+var dayFourWindEl = document.querySelector("#wind1");
+var dayFourHumidityEl = document.querySelector("#humidity1");
+
+var dayFiveIconEL = document.querySelector("#weather-icon-1");
+var dayFiveTempEL = document.querySelector("#temp1");
+var dayFiveWindEl = document.querySelector("#wind1");
+var dayFiveHumidityEl = document.querySelector("#humidity1");
 
 //pull from local storage
 var firstSearch = localStorage.getItem("recentSearch");

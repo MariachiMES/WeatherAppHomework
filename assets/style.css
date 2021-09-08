@@ -91,9 +91,9 @@ aside {
 }
 .forecast-card {
   background-image: linear-gradient(
-    rgba(251, 255, 0, 0.6),
-    rgba(255, 136, 0, 0.6),
-    rgba(255, 0, 0, 0.6),
+    rgba(191, 212, 251, 0.6),
+    rgba(155, 143, 223, 0.6),
+    rgba(61, 53, 165, 0.6),
     rgba(68, 0, 64, 0.6)
   );
   border-radius: 10px;
@@ -122,11 +122,12 @@ ul {
 }
 .info-card {
   font-size: 20px;
+  text-shadow: black 2px 2px;
   line-height: 40px;
-  margin-left: 25px;
+  margin-left: 10px;
   color: white;
 }
-#weather-icon1 {
+#weather-icon-0 {
   margin-left: 20px;
 }
 .mostRecent {
