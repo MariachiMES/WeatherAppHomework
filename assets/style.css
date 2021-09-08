@@ -57,9 +57,11 @@ aside {
   border: 0px;
   border-radius: 10px;
   padding: 5px;
-  margin-left: 0px;
-  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-weight: lighter;
+  width: 255px;
 }
 #submit-button:hover {
   background-image: linear-gradient(darkblue, cornflowerblue);
@@ -127,7 +129,12 @@ ul {
   margin-left: 10px;
   color: white;
 }
-#weather-icon-0 {
+#weather-icon-0,
+#weather-icon-1,
+#weather-icon-2,
+#weather-icon-3,
+#weather-icon-4,
+#weather-icon-5 {
   margin-left: 20px;
 }
 .mostRecent {
@@ -153,9 +160,11 @@ ul {
   border: 0px;
   border-radius: 10px;
   padding: 5px;
-  margin-left: 0px;
-  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-weight: lighter;
+  width: 255px;
 }
 #five-day-submit:hover {
   background-image: linear-gradient(darkblue, cornflowerblue);
