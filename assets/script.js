@@ -1,3 +1,25 @@
+setInterval(function () {
+  //get the current day and time using moment.js
+  var dayOne = moment().add(1, "days").format("dddd");
+  var dayTwo = moment().add(2, "days").format("dddd");
+  var dayThree = moment().add(3, "days").format("dddd");
+  var dayFour = moment().add(4, "days").format("dddd");
+  var dayFive = moment().add(5, "days").format("dddd");
+
+  //gets a handle on the text with the id 'currentDay' in the html
+  var dayOneEl = document.querySelector("#day-1");
+  var dayTwoEl = document.querySelector("#day-2");
+  var dayThreeEl = document.querySelector("#day-3");
+  var dayFourEl = document.querySelector("#day-4");
+  var dayFiveEl = document.querySelector("#day-5");
+  //set the currrentDay text in the #currentDay html
+  dayOneEl.innerText = dayOne;
+  dayTwoEl.innerText = dayTwo;
+  dayThreeEl.innerText = dayThree;
+  dayFourEl.innerText = dayFour;
+  dayFiveEl.innerText = dayFive;
+  //run it every 1000 milliseconds
+}, 1000);
 var currentCityEl = document.querySelector(".current-city");
 var cityTempEl = document.querySelector("#current-city-temp");
 var cityWindEl = document.querySelector("#current-city-wind");

@@ -169,3 +169,10 @@ ul {
 #five-day-submit:hover {
   background-image: linear-gradient(darkblue, cornflowerblue);
 }
+#day-1,
+#day-2,
+#day-3,
+#day-4,
+#day-5 {
+  text-shadow: black 2px 2px;
+}
