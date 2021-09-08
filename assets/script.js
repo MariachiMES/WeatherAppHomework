@@ -147,9 +147,10 @@ let weather = {
     weather.fetchWeather(searchEl.value);
     var recentSearch1 = searchEl.value;
     localStorage.setItem("recentSearch", recentSearch1);
+    firstSearchEL.innerHTML = recentSearch1;
   },
   searchLast: function () {
-    weather.fetchWeather(firstSearchEl.innerText);
+    weather.fetchWeather(firstSearchEL.innerText);
   },
   fiveDaySearch: function () {
     weather.fetchOhterStuff(latEl.innerText, lonEl.innerText);
@@ -177,7 +178,6 @@ let weather = {
   },
 };
 submitButtonEl.addEventListener("click", weather.search);
-firstSearchEL.innerText = firstSearch;
 
 fiveDaySubmitEl.addEventListener("click", weather.fiveDaySearch);
 //temperature per day = daily.temp.day
