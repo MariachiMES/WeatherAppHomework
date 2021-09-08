@@ -12,7 +12,7 @@
   <body>
     <header><h1>Weather App</h1></header></header>
     <aside class = "search-history"><h2>Search for a City:</h2><br>
-    <input type = "text" id = "search" placeholder ="City name only..."><input type = "submit" id="submit-button"><h3 id ="search-heading">Search History</h3>
+    <input type = "text" id = "search" placeholder ="City name only..."><input type = "submit" id="submit-button" value="SEARCH"><h3 id ="search-heading">Search History</h3>
 <div class = past-searches><ul class = mostRecent></ul><li></li></ul></div></aside>
     <section class = "current-forecast">
             <div class = "current-city">--</div>
@@ -22,24 +22,49 @@
             <div class="info" id = "current-city-humidity">Humidity: --</div>
             <div class="info" id = "current-city-uv">UV Index: --</div>
         <div class="forecast-header">5-Day Forecast</div>
-        <div class="5-day-forecast">
+    <div class="five-day-forecast">
         <div class="forecast-card">
             <div class="card-info"><ul><li>DATE</li></ul></div>
             <div class="info-card"> - - </div>
             <div class="info-card" id = "temp1">Temp:</div>
             <div class="info-card" id = "wind1">Wind:</div>
             <div class="info-card" id = "humidity1">Humidity:</div>
-            <div class="info-card" id = "uvindex1">UV Index:</div>    
+
+            </div>
         <div class="forecast-card">
+            <div class="card-info"><ul><li>DATE</li></ul></div>
+            <div class="info-card"> - - </div>
+            <div class="info-card" id = "temp2">Temp:</div>
+            <div class="info-card" id = "wind2">Wind:</div>
+            <div class="info-card" id = "humidity2">Humidity:</div>
+  
+        </div>
+        <div class="forecast-card">
+            <div class="card-info"><ul><li>DATE</li></ul></div>
+            <div class="info-card"> - - </div>
+            <div class="info-card" id = "temp1">Temp:</div>
+            <div class="info-card" id = "wind1">Wind:</div>
+            <div class="info-card" id = "humidity1">Humidity:</div>
+  
+            </div>
+            <div class="forecast-card">
                 <div class="card-info"><ul><li>DATE</li></ul></div>
                 <div class="info-card"> - - </div>
-                <div class="info-card" id = "temp2">Temp:</div>
-                <div class="info-card" id = "wind2">Wind:</div>
-                <div class="info-card" id = "humidity2">Humidity:</div>
-                <div class="info-card" id = "uvindex2">UV Index:</div>    
+                <div class="info-card" id = "temp1">Temp:</div>
+                <div class="info-card" id = "wind1">Wind:</div>
+                <div class="info-card" id = "humidity1">Humidity:</div>
+  
                 </div>
-        </div>
-    </section>
+                <div class="forecast-card">
+                    <div class="card-info"><ul><li>DATE</li></ul></div>
+                    <div class="info-card"> - - </div>
+                    <div class="info-card" id = "temp1">Temp:</div>
+                    <div class="info-card" id = "wind1">Wind:</div>
+                    <div class="info-card" id = "humidity1">Humidity:</div>
+  
+                    </div>
+    </div>
+</section>
   
   </body>
   <script src="./assets/script.js"></script>
