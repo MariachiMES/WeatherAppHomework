@@ -6,13 +6,13 @@ setInterval(function () {
   var dayFour = moment().add(4, "days").format("dddd");
   var dayFive = moment().add(5, "days").format("dddd");
 
-  //gets a handle on the text with the id 'currentDay' in the html
+  //gets a handle on the text with the id 'dayEl' in the html
   var dayOneEl = document.querySelector("#day-1");
   var dayTwoEl = document.querySelector("#day-2");
   var dayThreeEl = document.querySelector("#day-3");
   var dayFourEl = document.querySelector("#day-4");
   var dayFiveEl = document.querySelector("#day-5");
-  //set the currrentDay text in the #currentDay html
+  //set the day text in the #dayEl html
   dayOneEl.innerText = dayOne;
   dayTwoEl.innerText = dayTwo;
   dayThreeEl.innerText = dayThree;

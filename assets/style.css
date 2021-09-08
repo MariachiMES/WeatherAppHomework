@@ -93,10 +93,10 @@ aside {
 }
 .forecast-card {
   background-image: linear-gradient(
-    rgba(191, 212, 251, 0.6),
-    rgba(155, 143, 223, 0.6),
-    rgba(61, 53, 165, 0.6),
-    rgba(68, 0, 64, 0.6)
+    rgba(122, 138, 168, 0.6),
+    rgba(79, 71, 119, 0.7),
+    rgba(31, 29, 68, 0.8),
+    rgba(0, 0, 0, 0.9)
   );
   border-radius: 10px;
   height: 300px;
