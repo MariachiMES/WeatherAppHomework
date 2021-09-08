@@ -9,6 +9,9 @@ var iconEl = document.querySelector("#weather-icon-0");
 var weatherDescriptionEL = document.querySelector("#weather-description");
 var searchHeadingEL = document.querySelector("#search-heading");
 var firstSearchEL = document.querySelector(".mostRecent");
+var latEl = document.querySelector("#lattitude");
+var lonEl = document.querySelector("#longitude");
+var fiveDaySubmitEl = document.querySelector("#five-day-submit");
 
 //get a handle on the days of the week
 var dayOneIconEL = document.querySelector("#weather-icon-1");
@@ -16,25 +19,25 @@ var dayOneTempEL = document.querySelector("#temp1");
 var dayOneWindEl = document.querySelector("#wind1");
 var dayOneHumidityEl = document.querySelector("#humidity1");
 
-var dayTwoIconEL = document.querySelector("#weather-icon-1");
-var dayTwoTempEL = document.querySelector("#temp1");
-var dayTwoWindEl = document.querySelector("#wind1");
-var dayTwoHumidityEl = document.querySelector("#humidity1");
+var dayTwoIconEL = document.querySelector("#weather-icon-2");
+var dayTwoTempEL = document.querySelector("#temp2");
+var dayTwoWindEl = document.querySelector("#wind2");
+var dayTwoHumidityEl = document.querySelector("#humidity2");
 
-var dayThreeIconEL = document.querySelector("#weather-icon-1");
-var dayThreetempEL = document.querySelector("#temp1");
-var dayThreeWindEl = document.querySelector("#wind1");
-var dayThreeHumidityEl = document.querySelector("#humidity1");
+var dayThreeIconEL = document.querySelector("#weather-icon-3");
+var dayThreetempEL = document.querySelector("#temp3");
+var dayThreeWindEl = document.querySelector("#wind3");
+var dayThreeHumidityEl = document.querySelector("#humidity3");
 
-var dayFourIconEL = document.querySelector("#weather-icon-1");
-var dayFourTempEL = document.querySelector("#temp1");
-var dayFourWindEl = document.querySelector("#wind1");
-var dayFourHumidityEl = document.querySelector("#humidity1");
+var dayFourIconEL = document.querySelector("#weather-icon-4");
+var dayFourTempEL = document.querySelector("#temp4");
+var dayFourWindEl = document.querySelector("#wind4");
+var dayFourHumidityEl = document.querySelector("#humidity4");
 
-var dayFiveIconEL = document.querySelector("#weather-icon-1");
-var dayFiveTempEL = document.querySelector("#temp1");
-var dayFiveWindEl = document.querySelector("#wind1");
-var dayFiveHumidityEl = document.querySelector("#humidity1");
+var dayFiveIconEL = document.querySelector("#weather-icon-5");
+var dayFiveTempEL = document.querySelector("#temp5");
+var dayFiveWindEl = document.querySelector("#wind5");
+var dayFiveHumidityEl = document.querySelector("#humidity5");
 
 //pull from local storage
 var firstSearch = localStorage.getItem("recentSearch");
@@ -58,22 +61,12 @@ let weather = {
     var { temp, humidity } = data.main;
     var { speed } = data.wind;
     var { id } = data;
-    var { lat, lon } = data.coord;
-    console.log(id + "," + lat + "," + lon);
+    var { lat } = data.coord;
+    var { lon } = data.coord;
+    console.log("lattidue= " + lat + "," + "longitude= " + lon + "," + id);
 
-    console.log(
-      "the weather in " +
-        name +
-        " is " +
-        temp +
-        " °F, with " +
-        humidity +
-        "% humidity and wind speeds of " +
-        speed +
-        " Mph." +
-        icon +
-        main
-    );
+    latEl.innerText = lat;
+    lonEl.innerText = lon;
     currentCityEl.innerHTML = name;
     cityTempEl.innerHTML = "Temp: " + temp + "°F";
     cityWindEl.innerHTML = "Wind: " + speed + " Miles/Hour";
@@ -81,36 +74,73 @@ let weather = {
     iconEl.src = "https://openweathermap.org/img/wn/" + icon + ".png";
     weatherDescriptionEL.innerHTML = main;
   },
-  search: function () {
-    weather.fetchWeather(searchEl.value);
-    var recentSearch1 = searchEl.value;
-    localStorage.setItem("recentSearch", recentSearch1);
-    console.log("hello");
-
-    weather.uvIndexOnClick(weather.lat, weather.lon);
-  },
-  fetcyUvIndex: function (lat, lon) {
+  fetchOhterStuff: function (lat, lon) {
     fetch(
       "https://api.openweathermap.org/data/2.5/onecall?lat=" +
         lat +
         "&lon=" +
         lon +
+        "&units=imperial" +
         "&appid=" +
         this.apiKey
     )
-      .then((uvResp) => uvResp.json())
-      .then((uvData) => this.displayUvIndex(uvData));
+      .then((response) => response.json())
+      .then((data) => this.displayOtherStuff(data));
   },
-  displayUvIndex: function (uvData) {
-    var { uvi } = uvData.current;
+  displayOtherStuff: function (data) {
+    var { uvi } = data.current;
+    var { day } = data.daily[1].temp;
+    var { humidity } = data.daily[1];
+    var { wind_speed } = data.daily[1];
+
+    console.log(
+      "the temperature will be " +
+        day +
+        " degrees Fahrenheit.  The humidity will be " +
+        humidity +
+        "%.  The wind speed will be " +
+        wind_speed +
+        "mph."
+    );
+    cityUvEl.innerHTML = "UV Index: " + data.current.uvi;
+    dayOneTempEL.innerHTML = "Temp: " + data.daily[1].temp.day + "°F";
+    dayOneHumidityEl.innerHTML = "Humidity: " + data.daily[1].humidity + "%";
+  },
+  search: function () {
+    weather.fetchWeather(searchEl.value);
+    var recentSearch1 = searchEl.value;
+    localStorage.setItem("recentSearch", recentSearch1);
+  },
+  fiveDaySearch: function () {
+    weather.fetchOhterStuff(latEl.innerText, lonEl.innerText);
+  },
+  //   fetchUvIndex: function (lat, lon) {
+  //     fetch(
+  //       "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+  //         lat +
+  //         "&lon=" +
+  //         lon +
+  //         "&appid=" +
+  //         this.apiKey
+  //     )
+  //       .then((response) => response.json())
+  //       .then((data) => console.log(data));
+  //   },
+  displayUvIndex: function (data) {
+    var { uvi } = data.current;
     cityUvEl.innerHTML = uvi;
     console.log(uvi);
   },
   uvIndexOnClick: function () {
     weather.fetchUvIndex(lat, lon);
-    weather.displayUvIndex(unData);
+    weather.displayUvIndex(data);
   },
 };
 submitButtonEl.addEventListener("click", weather.search);
 firstSearchEL.innerText = firstSearch;
-firstSearchEL.addEventListener("click", event);
+
+fiveDaySubmitEl.addEventListener("click", weather.fiveDaySearch);
+//temperature per day = daily.temp.day
+// humidity per day = daily.humidity
+// wind speed per day = daily.wind_speed
+// daily weather icon = daily.weather.icon

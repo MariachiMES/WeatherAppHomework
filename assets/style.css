@@ -3,9 +3,9 @@ html {
 }
 body {
   padding: 0;
-  background-image: url("./train.jpg");
-  background-size: 340%;
-  background-position: -200px;
+  background-image: url("./butterfly.jpg");
+  background-size: 150%;
+  background-position: 0px -200px;
 }
 header {
   background-image: linear-gradient(to right, darkblue, cornflowerblue);
@@ -142,4 +142,21 @@ ul {
   list-style-type: none;
   padding: 10px;
   line-height: 30px;
+}
+.coordinates {
+  display: none;
+}
+#five-day-submit {
+  font-size: 24px;
+  background-image: linear-gradient(blue, cornflowerblue);
+  color: white;
+  border: 0px;
+  border-radius: 10px;
+  padding: 5px;
+  margin-left: 0px;
+  margin-right: 10px;
+  font-weight: lighter;
+}
+#five-day-submit:hover {
+  background-image: linear-gradient(darkblue, cornflowerblue);
 }
