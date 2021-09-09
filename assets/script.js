@@ -36,30 +36,6 @@ var lonEl = document.querySelector("#longitude");
 var fiveDaySubmitEl = document.querySelector("#five-day-submit");
 
 //get a handle on the days of the week
-var dayOneIconEL = document.querySelector("#weather-icon-1");
-var dayOneTempEL = document.querySelector("#temp1");
-var dayOneWindEl = document.querySelector("#wind1");
-var dayOneHumidityEl = document.querySelector("#humidity1");
-
-var dayTwoIconEL = document.querySelector("#weather-icon-2");
-var dayTwoTempEL = document.querySelector("#temp2");
-var dayTwoWindEl = document.querySelector("#wind2");
-var dayTwoHumidityEl = document.querySelector("#humidity2");
-
-var dayThreeIconEL = document.querySelector("#weather-icon-3");
-var dayThreeTempEL = document.querySelector("#temp3");
-var dayThreeWindEl = document.querySelector("#wind3");
-var dayThreeHumidityEl = document.querySelector("#humidity3");
-
-var dayFourIconEL = document.querySelector("#weather-icon-4");
-var dayFourTempEL = document.querySelector("#temp4");
-var dayFourWindEl = document.querySelector("#wind4");
-var dayFourHumidityEl = document.querySelector("#humidity4");
-
-var dayFiveIconEL = document.querySelector("#weather-icon-5");
-var dayFiveTempEL = document.querySelector("#temp5");
-var dayFiveWindEl = document.querySelector("#wind5");
-var dayFiveHumidityEl = document.querySelector("#humidity5");
 
 //pull from local storage
 var firstSearch = localStorage.getItem("recentSearch");
@@ -124,46 +100,20 @@ let weather = {
         wind_speed +
         "mph."
     );
+
+    for (var i = 1; i < 6; i++) {
+      document.querySelector(
+        `#weather-icon-${i}`
+      ).src = `https://openweathermap.org/img/wn/${data.daily[i].weather[0].icon}.png`;
+      document.querySelector("#temp" + i).innerHTML =
+        "Temp: " + data.daily[i].temp.day + "°F";
+      document.querySelector("#humidity" + i).innerHTML =
+        "Humidity: " + data.daily[i].humidity + "%";
+      document.querySelector("#wind" + i).innerHTML =
+        "Wind: " + data.daily[i].wind_speed + "mph";
+    }
+
     cityUvEl.innerHTML = "UV Index: " + data.current.uvi;
-    dayOneIconEL.src =
-      "https://openweathermap.org/img/wn/" +
-      data.daily[1].weather[0].icon +
-      ".png";
-    dayOneTempEL.innerHTML = "Temp: " + data.daily[1].temp.day + "°F";
-    dayOneHumidityEl.innerHTML = "Humidity: " + data.daily[1].humidity + "%";
-    dayOneWindEl.innerHTML = "Wind: " + data.daily[1].wind_speed + "mph";
-
-    dayTwoIconEL.src =
-      "https://openweathermap.org/img/wn/" +
-      data.daily[2].weather[0].icon +
-      ".png";
-    dayTwoTempEL.innerHTML = "Temp: " + data.daily[2].temp.day + "°F";
-    dayTwoHumidityEl.innerHTML = "Humidity: " + data.daily[2].humidity + "%";
-    dayTwoWindEl.innerHTML = "Wind: " + data.daily[2].wind_speed + "mph";
-
-    dayThreeIconEL.src =
-      "https://openweathermap.org/img/wn/" +
-      data.daily[3].weather[0].icon +
-      ".png";
-    dayThreeTempEL.innerHTML = "Temp: " + data.daily[3].temp.day + "°F";
-    dayThreeHumidityEl.innerHTML = "Humidity: " + data.daily[3].humidity + "%";
-    dayThreeWindEl.innerHTML = "Wind: " + data.daily[3].wind_speed + "mph";
-
-    dayFourIconEL.src =
-      "https://openweathermap.org/img/wn/" +
-      data.daily[4].weather[0].icon +
-      ".png";
-    dayFourTempEL.innerHTML = "Temp: " + data.daily[4].temp.day + "°F";
-    dayFourHumidityEl.innerHTML = "Humidity: " + data.daily[4].humidity + "%";
-    dayFourWindEl.innerHTML = "Wind: " + data.daily[4].wind_speed + "mph";
-
-    dayFiveIconEL.src =
-      "https://openweathermap.org/img/wn/" +
-      data.daily[5].weather[0].icon +
-      ".png";
-    dayFiveTempEL.innerHTML = "Temp: " + data.daily[5].temp.day + "°F";
-    dayFiveHumidityEl.innerHTML = "Humidity: " + data.daily[5].humidity + "%";
-    dayFiveWindEl.innerHTML = "Wind: " + data.daily[5].wind_speed + "mph";
   },
   search: function () {
     weather.fetchWeather(searchEl.value);
