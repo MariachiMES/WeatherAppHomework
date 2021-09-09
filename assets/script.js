@@ -1,24 +1,9 @@
 setInterval(function () {
-  //get the current day and time using moment.js
-  var dayOne = moment().add(1, "days").format("dddd");
-  var dayTwo = moment().add(2, "days").format("dddd");
-  var dayThree = moment().add(3, "days").format("dddd");
-  var dayFour = moment().add(4, "days").format("dddd");
-  var dayFive = moment().add(5, "days").format("dddd");
-
-  //gets a handle on the text with the id 'dayEl' in the html
-  var dayOneEl = document.querySelector("#day-1");
-  var dayTwoEl = document.querySelector("#day-2");
-  var dayThreeEl = document.querySelector("#day-3");
-  var dayFourEl = document.querySelector("#day-4");
-  var dayFiveEl = document.querySelector("#day-5");
-  //set the day text in the #dayEl html
-  dayOneEl.innerText = dayOne;
-  dayTwoEl.innerText = dayTwo;
-  dayThreeEl.innerText = dayThree;
-  dayFourEl.innerText = dayFour;
-  dayFiveEl.innerText = dayFive;
-  //run it every 1000 milliseconds
+  for (var i = 1; i < 6; i++) {
+    document.querySelector(`#day-${i}`).innerText = moment()
+      .add(i, "days")
+      .format("dddd");
+  }
 }, 1000);
 var currentCityEl = document.querySelector(".current-city");
 var cityTempEl = document.querySelector("#current-city-temp");
@@ -127,18 +112,7 @@ let weather = {
   fiveDaySearch: function () {
     weather.fetchOhterStuff(latEl.innerText, lonEl.innerText);
   },
-  //   fetchUvIndex: function (lat, lon) {
-  //     fetch(
-  //       "https://api.openweathermap.org/data/2.5/onecall?lat=" +
-  //         lat +
-  //         "&lon=" +
-  //         lon +
-  //         "&appid=" +
-  //         this.apiKey
-  //     )
-  //       .then((response) => response.json())
-  //       .then((data) => console.log(data));
-  //   },
+
   displayUvIndex: function (data) {
     var { uvi } = data.current;
     cityUvEl.innerHTML = uvi;
@@ -152,8 +126,5 @@ let weather = {
 submitButtonEl.addEventListener("click", weather.search);
 
 fiveDaySubmitEl.addEventListener("click", weather.fiveDaySearch);
-//temperature per day = daily.temp.day
-// humidity per day = daily.humidity
-// wind speed per day = daily.wind_speed
-// daily weather icon = daily.weather.icon
+
 firstSearchEL.addEventListener("click", weather.searchLast);
