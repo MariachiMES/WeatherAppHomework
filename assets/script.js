@@ -128,3 +128,10 @@ submitButtonEl.addEventListener("click", weather.search);
 fiveDaySubmitEl.addEventListener("click", weather.fiveDaySearch);
 
 firstSearchEL.addEventListener("click", weather.searchLast);
+
+var displayDays = function () {
+  for (var i = 0; i < 6; i++) {
+    document.querySelector(`#day-${i}`).innerText =
+      moment().add(i, "days").format("dddd") + " - ";
+  }
+};
