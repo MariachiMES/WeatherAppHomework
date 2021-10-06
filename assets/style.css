@@ -85,6 +85,12 @@ aside {
   padding: 25px;
   font-size: 30px;
 }
+.uvIndex {
+  font-size: 20px;
+  line-height: 20x;
+  margin-left: 25px;
+  color: white;
+}
 .info {
   font-size: 20px;
   line-height: 40px;
@@ -175,4 +181,34 @@ ul {
 #day-4,
 #day-5 {
   text-shadow: black 2px 2px;
+}
+.uvGreen {
+  background-color: lightgreen;
+  font-size: 20;
+  line-height: 20px;
+  margin-left: 25px;
+  color: black;
+  width: 50px;
+  padding: 5px;
+  border-radius: 10px;
+}
+.uvOrange {
+  background-color: orange;
+  font-size: 20px;
+  line-height: 20px;
+  margin-left: 25px;
+  color: black;
+  width: 50px;
+  padding: 5px;
+  border-radius: 10px;
+}
+.uvRed {
+  background-color: red;
+  font-size: 20px;
+  line-height: 20px;
+  margin-left: 25px;
+  color: black;
+  width: 50px;
+  padding: 5px;
+  border-radius: 10px;
 }

@@ -23,6 +23,7 @@ var fiveDaySubmitEl = document.querySelector("#five-day-submit");
 //get a handle on the days of the week
 
 //pull from local storage
+var recentSearch = [];
 var firstSearch = localStorage.getItem("recentSearch");
 firstSearchEL.innerHTML = firstSearch;
 // var apiKey = "bc3a571ec5865457fb6b52d6cce74452";
@@ -110,13 +111,35 @@ let weather = {
         "Wind: " + david.daily[i].wind_speed + "mph";
     }
 
-    cityUvEl.innerHTML = "UV Index: " + david.current.uvi;
+    cityUvEl.innerHTML = david.current.uvi;
+    console.log(uvi);
+    var changeBgColor = function (uvi) {
+      if (uvi < 3) {
+        cityUvEl.classList.remove("info");
+        cityUvEl.classList.add("uvGreen");
+      } else if (uvi > 3 && uvi < 5) {
+        cityUvEl.classList.remove("info");
+        cityUvEl.classList.add("uvOrange");
+      } else if (uvi > 5) {
+        cityUvEl.classList.remove("info");
+        cityUvEl.classList.add("uvRed");
+      }
+    };
+    changeBgColor(uvi);
   },
   search: function () {
     weather.fetchWeather(searchEl.value);
-    var recentSearch1 = searchEl.value;
-    localStorage.setItem("recentSearch", recentSearch1);
-    firstSearchEL.innerHTML = recentSearch1;
+    recentSearch.push(searchEl.value);
+    localStorage.setItem("recentSearch", recentSearch);
+    for (var i = 0; i < recentSearch.length; i++) {
+      var cityButton = document.createElement("button");
+      cityButton.addEventListener(
+        "click",
+        weather.fetchWeather(recentSearch[i])
+      );
+      cityButton.innerHTML = recentSearch[i];
+      console.log(recentSearch[i]);
+    }
   },
   searchLast: function () {
     weather.fetchWeather(firstSearchEL.innerText);
