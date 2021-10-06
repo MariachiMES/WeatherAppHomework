@@ -114,14 +114,20 @@ let weather = {
     cityUvEl.innerHTML = david.current.uvi;
     console.log(uvi);
     var changeBgColor = function (uvi) {
-      if (uvi < 3) {
+      if (uvi <= 3) {
         cityUvEl.classList.remove("info");
+        cityUvEl.classList.remove("uvRed");
+        cityUvEl.classList.remove("uvOrange");
         cityUvEl.classList.add("uvGreen");
       } else if (uvi > 3 && uvi < 5) {
+        cityUvEl.classList.remove("uvGreen");
+        cityUvEl.classList.remove("uvRed");
         cityUvEl.classList.remove("info");
         cityUvEl.classList.add("uvOrange");
       } else if (uvi > 5) {
         cityUvEl.classList.remove("info");
+        cityUvEl.classList.remove("uvOrange");
+        cityUvEl.classList.remove("uvGreen");
         cityUvEl.classList.add("uvRed");
       }
     };
